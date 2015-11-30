@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var port = Number(process.env.port || 8080);
 app.use(bodyParser.json());
 
 var defaultEstimate1 = {
@@ -141,6 +142,6 @@ app.get('/estimate', function (request,response) {
 	response.status(200).json(app.filterEstimatesByProperties(request.query));
 });
 
-var server = app.listen(8080, function() {
-    console.log('Listening on port 8080');
+var server = app.listen(port, function() {
+    console.log('Listening on port ' + port);
 });

@@ -1,0 +1,27 @@
+{
+  "name": "planningpoker",
+  "version": "1.0.0",
+  "description": "Initial Release",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "angular-route": "^1.4.8",
+    "angular": "^1.4.8",
+    "express": "^4.13.3",
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cushdrive/Planning_Poker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cushdrive/Planning_Poker/issues"
+  },
+  "homepage": "https://github.com/Cushdrive/Planning_Poker#readme"
+}
