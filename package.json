@@ -5,10 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "angular-route": "^1.4.8",
-    "angular": "^1.4.8",
-    "express": "^4.13.3",
-    "bootstrap": "^3.3.6"
+    "express": "^4.13.3"
   },
   "devDependencies": {},
   "scripts": {
