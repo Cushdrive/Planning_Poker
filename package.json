@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Initial Release",
   "main": "server.js",
+  "engines": {
+    "node":"4.1.2",
+    "npm":"3.4.0"
+  }
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3"
