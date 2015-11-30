@@ -127,7 +127,7 @@ app.put('/estimate', function (request,response) {
 	app.insertNewEstimate(newObj);
 	//console.log(JSON.stringify(estimateArray));
 	//console.log(JSON.stringify(app.filterEstimatesByProperties([{propName:"user",propVal:newObj.user}])));
-	response.status(200).json(app.filterEstimatesByProperties({"user": newObj.user, "visible": true}));
+	response.status(200).json(app.filterEstimatesByProperties({"user": newObj.user}));
 });
 
 app.post('/estimate', function (request,response) {
