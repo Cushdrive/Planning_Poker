@@ -1,0 +1,53 @@
+.all-estimates.moderator {
+	position: static;
+  	margin-top: 25px;
+}
+
+.estimate-container.moderator {
+	margin-bottom: 10px;
+}
+
+.menu_options {
+	background-color: gray;
+	width: 180px;
+	border-right: 2px solid black;
+}
+
+.nav-option {
+	font-size: 14pt;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	margin: 10px 4px;
+	padding: 3px;
+	border: 1px solid black;
+	background-color: rgb(230, 0, 0);
+	border-radius: 5px;
+	cursor: default;
+}
+
+
+.estimate-container.moderator.menuopen {
+	position: absolute;
+	left: 180; top: 125; right: -180; bottom: 0;
+	opacity: .2;
+}
+
+.estimate-container.moderator.menuclosed {
+	position: absolute;
+	left: 0; top: 125; right: 0; bottom: 0;
+	opacity: 1;
+}
+
+.menu_options.menuopen {
+	position: absolute;
+	left: 0; top: 100; right: 180; bottom: 0;
+}
+
+.menu_options.menuclosed {
+	position: absolute;
+	left: -180; top: 100; right: 0; bottom: 0;
+}
+
+
+

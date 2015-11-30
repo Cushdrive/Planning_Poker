@@ -1,0 +1,45 @@
+.estimate {
+  border: 2px solid black;
+  margin: 5px 50px;
+  margin-top: 25px;
+  border-radius: 5px;
+  height: 124px;
+}
+
+.estimate-new {
+  width: auto;
+  float: left;
+  padding: 5px;
+}
+
+.estimate-user {
+  margin-top: 2px;
+}
+
+.estimate-new div {
+  height: 30px;
+}
+
+.new-label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.estimate-desc {
+  width: 60%;
+  padding: 5px;
+  float: right;
+}
+
+.desc-text {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+
+
+.section-break {
+  height: 5px;
+  margin: 20px 10px;
+  background-color: rgb(230, 0, 0);
+}

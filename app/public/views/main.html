@@ -1,0 +1,44 @@
+<!--
+<div class="userinfo">
+  <form name="userInfo" ng-submit="view()">
+    <label class="userinfo-label">Name:</label>
+    <input class="userinfo-name" type="text" required placeholder="Enter your name" ng-model="name"><br>
+    
+    <label class="userinfo-label" id="type-label">I am a...</label>
+    <label class="userinfo-type">
+      <input type="radio" ng-Model="type" value="Moderator">Moderator
+    </label>
+    <label>
+      <input type="radio" ng-Model="type" value="Participant">Participant
+    </label><br>
+    <input class="userinfo-submit button" type="submit" value="Submit"></input>
+  </form>
+</div>
+-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-push-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="page-header">
+            <h4>First some information...<input type="submit" value="Save" ng-click="view()" class="btn btn-info pull-right" ng-click="submit()"></h4>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon pp-label-width" id="basic-addon1">Name</span>
+            <input type="text" class="form-control" placeholder="None provided" aria-describedby="basic-addon1" ng-model="name">
+          </div>
+          <div class="help-block"></div>
+
+          <label class="radio-inline col-md-push-1">
+            <input type="radio" value="Moderator" ng-model="type">I'm the moderator.
+          </label>
+          <label class="radio-inline col-md-push-1">
+            <input type="radio" value="Participant" ng-model="type">I'm a participant.
+          </label>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

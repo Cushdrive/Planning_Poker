@@ -1,0 +1,27 @@
+body {
+	padding-top: 80px;
+}
+
+.brand-image {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	top: 25px;
+}
+
+.page-header {
+	margin-top: 0px;
+}
+
+.panel-body {
+
+	padding-top: 0px;
+}
+
+.input-group {
+	width: 100%;
+}
+
+.pp-label-width {
+	width: 105px;
+}

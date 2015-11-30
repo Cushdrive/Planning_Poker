@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-3 col-md-push-9">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <h4 class="list-group-item-heading">Average Estimate</h4>
+          <p class="list-group-item-text">Story Points: {{average}}</p>
+        </li>
+        <li class="list-group-item">
+          <h4 class="list-group-item-heading">Highest Estimate</h4>
+          <p class="list-group-item-text">Story Points: {{highestpoints}}</p>
+          <p class="list-group-item-text">Name(s): {{highestuser}}</p>
+        </li>
+        <li class="list-group-item">
+          <h4 class="list-group-item-heading">Lowest Estimate</h4>
+          <p class="list-group-item-text">Story Points: {{lowestpoints}}</p>
+          <p class="list-group-item-text">Name(s): {{lowestuser}}</p>         
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-9 col-md-pull-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="page-header">
+            <h3>Estimate History</h3>
+          </div>
+
+          <div class="well" ng-repeat="estimate in estimates">
+            <div class="row">
+              <div class="col-md-12">
+                <label>{{estimate.timestamp}}</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="help-block"></div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <span class="input-group-addon pp-label-width" id="basic-addon1">User</span>
+                  <input type="text" class="form-control" placeholder="None provided" readonly aria-describedby="basic-addon1" value="{{estimate.user}}" readonly>
+                </div>
+              </div>
+              <div class="help-block"></div>
+              <div class="col-md-4">
+                 <div class="input-group">
+                  <span class="input-group-addon pp-label-width" id="basic-addon2">Story ID</span>
+                  <input type="text" class="form-control" placeholder="e.g., BAXNHP-1234" aria-describedby="basic-addon2" value="{{estimate.story}}" readonly>
+                </div>             
+              </div>
+              <div class="help-block"></div>
+              <div class="col-md-4">
+                 <div class="input-group">
+                  <span class="input-group-addon pp-label-width" id="basic-addon3">Story Points</span>
+                  <input type="text" class="form-control" placeholder="e.g., 5" aria-describedby="basic-addon3" value="{{estimate.points}}" readonly>
+                </div>             
+              </div>
+            </div>
+            <div class="help-block"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input-group">
+                  <span class="input-group-addon pp-label-width" id="basic-addon4">Rationale</span>
+                  <textarea class="form-control" placeholder="Rationale and/or description" aria-describedby="basic-addon4" rows="4" readonly>{{estimate.description}}</textarea>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End well -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

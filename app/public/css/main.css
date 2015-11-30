@@ -1,0 +1,33 @@
+.userinfo {
+	border: 2px solid black;
+	border-radius: 5px;
+	padding: 5px;
+	width: 18%;
+	margin: 50px auto;
+	height: 110px;
+}
+
+.userinfo-label {
+	font-weight: bold;
+}
+
+.userinfo-name {
+	margin-bottom: 10px;
+}
+
+#type-label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.userinfo-submit {
+	margin-top: 5px;
+}
+
+.button {
+  display: block;
+  float: right;
+  background-color: rgb(230, 0, 0);
+  color: white;
+  border-radius: 5px;
+}
