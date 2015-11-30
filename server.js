@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var port = Number(process.env.port || 8080);
+var port = Number(process.env.PORT || 8080);
 app.use(bodyParser.json());
 
 var defaultEstimate1 = {
