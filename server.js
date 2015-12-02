@@ -100,16 +100,17 @@ app.filterEstimatesByProperties = function(filterObject,objectForSort) {
 						foundProp = true;
 						returnVal.estimates.push(objectForSort.estimates[i]);
 					}
-					else if (foundProp == true) {
-						break;
-					}
 				}
 				//console.log("Number of estimates remaining after filtering: " + returnVal.estimates.length)
-				objectForSort = returnVal;
+				//This will allow us to continue the incremental filtering.
+				if (foundProp) {
+					objectForSort = returnVal;
+				}
 			}
 		}
 
 	}
+	//Note that an empty array will be returned if the filter property is not valid.
 	return returnVal;
 };
 
