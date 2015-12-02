@@ -28,7 +28,7 @@ var compareEstimateTimestamp = function(a,b) {
 	return returnVal;
 }
 
-console.log(JSON.stringify(estimateArray));
+//console.log(JSON.stringify(estimateArray));
 
 app.use(express.static(__dirname + '/public'));
 
@@ -92,7 +92,7 @@ app.filterEstimatesByProperties = function(filterObject,objectForSort) {
 		for (var currentProp in filterObject) {
 			currentVal = filterObject[currentProp];
 			if (currentVal != "*") {
-				console.log("Filtering on property: " + currentProp + ", with value: " + currentVal)
+				//console.log("Filtering on property: " + currentProp + ", with value: " + currentVal)
 				foundProp = false;
 				returnVal = {estimates:[]};
 				for (i = 0; i < objectForSort.estimates.length; i++) {
@@ -104,7 +104,7 @@ app.filterEstimatesByProperties = function(filterObject,objectForSort) {
 						break;
 					}
 				}
-				console.log("Number of estimates remaining after filtering: " + returnVal.estimates.length)
+				//console.log("Number of estimates remaining after filtering: " + returnVal.estimates.length)
 				objectForSort = returnVal;
 			}
 		}
@@ -114,7 +114,7 @@ app.filterEstimatesByProperties = function(filterObject,objectForSort) {
 };
 
 app.put('/estimate', function (request,response) {
-	console.log("Estimate Posted: " + request.body);
+	//console.log("Estimate Posted: " + request.body);
 
 	var newObj = {
 		timestamp: (new Date).toLocaleString(),
@@ -131,17 +131,17 @@ app.put('/estimate', function (request,response) {
 });
 
 app.post('/estimate', function (request,response) {
-	console.log("Moderator Posted: " + request.body);
+	//console.log("Moderator Posted: " + request.body);
 	app.updateAllEstimates(request.body);
 	response.status(200).json(app.filterEstimatesByProperties({"visible": true}));
 });
 
 app.get('/estimate', function (request,response) {
-	console.log(request.query.name);
-	console.log(estimateArray.estimates);
+	//console.log(request.query.name);
+	//console.log(estimateArray.estimates);
 	response.status(200).json(app.filterEstimatesByProperties(request.query));
 });
 
 var server = app.listen(port, function() {
-    console.log('Listening on port ' + port);
+    //console.log('Listening on port ' + port);
 });

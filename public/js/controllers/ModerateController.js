@@ -24,7 +24,7 @@ var moderateController = function ($scope,$location,estimateService,userservice)
 		var currentPoints = 0;
 		ResetStats();
 
-		if ($scope.estimates.length > 0) {
+		if (($scope.estimates) && ($scope.estimates.length > 0)) {
 
 			$scope.lowestpoints = Number($scope.estimates[0].points);
 			$scope.lowestuser = $scope.estimates[0].user;
@@ -71,6 +71,12 @@ var moderateController = function ($scope,$location,estimateService,userservice)
 	$scope.$on('onMenuToggle', function (event, data) {
 		 estimateService.hideEstimates()
   		.then(onEstimatesComplete,onEstimatesError);
+  	});
+
+  	//Handle the menu timer timeout.
+	$scope.$on('onTimerTimeout', function (event, data) {
+		estimateService.getVisibleEstimates()
+		.then(onEstimatesComplete,onEstimatesError);		 
   	});
 
 	estimateService.getVisibleEstimates()

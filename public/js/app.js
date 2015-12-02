@@ -9,23 +9,41 @@
 	myApp.config(function ($routeProvider) {
 		$routeProvider
 			.when("/main", {
-				templateUrl: "main.html",
+				templateUrl: "/views/main.html",
 				controller: "MainController"
 			})
 			.when("/participate", {
-				templateUrl: "participate.html",
+				templateUrl: "/views/participate.html",
 				controller: "ParticipateController"
 			})
 			.when("/moderate", {
-				templateUrl: "moderate.html",
+				templateUrl: "/views/moderate.html",
 				controller: "ModerateController"
 			})
 			.otherwise({redirectTo: "/main"});
 	});
 
 	//Setup a controller so we can bubble menu click information down to the individual controllers
-	var menuController = function ($scope) {
+	var menuController = function ($scope, $interval) {
+		$scope.timeout = "";
 		var menuOpen = false;
+		var stoptime = "";
+
+		var publishtimeout = function () {
+			$interval.cancel(stoptime);
+			$scope.$broadcast('onTimerTimeout',$scope.timeout);
+			$scope.timeout = "";
+		};
+
+		$scope.time = function () {
+			var timeout = Number($scope.timeout);
+			$interval.cancel(stoptime);
+			if (timeout != "NaN") {
+				timeout = timeout * 60000;
+				stoptime = $interval(publishtimeout,timeout);
+			}
+			
+		};
 
 		$scope.click = function () {
 			menuOpen = !menuOpen;
@@ -38,41 +56,6 @@
 
 	}; //end controller implementation
 
-	myApp.controller('MenuController',['$scope', menuController]);
-
-	//Setup a service that all controllers will have access to for information sharing.
-	myApp.service('userservice',function(){
-		
-		var userInfo = {
-			name: "",
-			type: "Participant"
-		};
-
-		var setName = function(name) {
-			userInfo.name = name;
-		};
-
-		var setType = function(type) {
-			if ((type != "Participant") && (type != "Moderator")){
-				type = "Participant";
-			}
-			userInfo.type = type;
-		};
-
-		var getType = function() {
-			return userInfo.type;
-		};
-
-		var getName = function() {
-			return userInfo.name;
-		};
-
-		return {
-			setName: setName,
-			getName: getName,
-			setType: setType,
-			getType: getType
-		};
-	});
+	myApp.controller('MenuController',['$scope', '$interval', menuController]);
 
 }());
