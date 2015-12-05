@@ -10,6 +10,7 @@ var moderateController = function ($scope,$location,estimateService,userservice)
 	$scope.highestpoints = 0;
 	$scope.lowestuser = "";
 	$scope.lowestpoints = 0;
+	$scope.csv = "";
 
 	var ResetStats = function() {
 		$scope.average = 0;
@@ -67,20 +68,34 @@ var moderateController = function ($scope,$location,estimateService,userservice)
 		CalculateStats();
 	};
 
+	var onCSVError = function (err) {
+		$scope.errorString = "oops";
+	};
+
+	var onCSVComplete = function (data) {
+		$scope.csv = data;
+	};
+
+	var refreshPage = function() {
+		estimateService.getVisibleEstimates()
+		.then(onEstimatesComplete,onEstimatesError);
+
+		estimateService.getAllCSV()
+		.then(onCSVComplete,onCSVError);
+	};
+
 	//Handle the menu button click.
-	$scope.$on('onMenuToggle', function (event, data) {
+	$scope.$on('onClear', function (event, data) {
 		 estimateService.hideEstimates()
   		.then(onEstimatesComplete,onEstimatesError);
   	});
 
   	//Handle the menu timer timeout.
 	$scope.$on('onTimerTimeout', function (event, data) {
-		estimateService.getVisibleEstimates()
-		.then(onEstimatesComplete,onEstimatesError);		 
+		refreshPage();	 
   	});
 
-	estimateService.getVisibleEstimates()
-	.then(onEstimatesComplete,onEstimatesError);
+	refreshPage();
 
 }; //end controller implementation
 

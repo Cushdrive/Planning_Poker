@@ -5,7 +5,7 @@
     var getMyStoryEstimates = function(name,story) {
       return $http(
           {
-            url: urlService.getServiceURL(),
+            url: urlService.getEstimateURL(),
             method: "GET",
             params: {"user": name,"story": story, "visible": true}
           }
@@ -18,7 +18,7 @@
     var getMyEstimates = function(name) {
       return $http(
           {
-            url: urlService.getServiceURL(),
+            url: urlService.getEstimateURL(),
             method: "GET",
             params: {"user": name, "story": "*"}
           }
@@ -33,7 +33,7 @@
     };
 
     var hideEstimates = function() {
-      return $http.post(urlService.getServiceURL(),{
+      return $http.post(urlService.getEstimateURL(),{
         visible:false
       })
       .then(function(response) {
@@ -44,9 +44,21 @@
     var getVisibleEstimates = function() {
       return $http(
           {
-            url: urlService.getServiceURL(),
+            url: urlService.getEstimateURL(),
             method: "GET",
             params: {"user": "*", "story": "*","visible": true}
+          }
+        )
+        .then(function(response) {
+          return response.data;
+      });
+    };
+
+    var getAllCSV = function() {
+      return $http(
+          {
+            url: urlService.getCSVURL(),
+            method: "GET"
           }
         )
         .then(function(response) {
@@ -57,7 +69,7 @@
     var deleteEstimates = function() {};
 
     var postMyEstimate = function(name,story,points,description) {
-      return $http.put(urlService.getServiceURL(),{
+      return $http.put(urlService.getEstimateURL(),{
         user:name,
         story:story,
         points:points,
@@ -78,7 +90,8 @@
       getMyStoryEstimates: getMyStoryEstimates,
       postMyEstimate: postMyEstimate,
       getVisibleEstimates: getVisibleEstimates,
-      getMyEstimates: getMyEstimates
+      getMyEstimates: getMyEstimates,
+      getAllCSV: getAllCSV
     };
   };
   

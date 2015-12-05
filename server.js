@@ -2,20 +2,25 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var port = Number(process.env.PORT || 8080);
+var json2csv = require('json2csv');
+var fields = ['timestamp', 'user', 'story','points','description','visible'];
 app.use(bodyParser.json());
 
 var defaultEstimate1 = {
-	timestamp:(new Date).getTime(),
-	user:"Dummy",
-	story:"Fix it!",
-	points:"1 SP"
+	timestamp: (new Date).toLocaleString(),
+	user: "test",
+	story: "BAXNHP-XXXX",
+	points: "5",
+	description: "This is a test.",
+	visible: true
 };
 
 //For new estimates, create a new array for the user and add all estimates for the user at the end. 
 //Other entries not matching the user go into a separate new array. Insert the new entry at the end 
 //of the user array, and then join the two arrays.
 
-var estimateArray = { estimates:[]};
+var estimateArray = { estimates:[], csv: ""};
+//estimateArray.estimates.push(defaultEstimate1);
 
 var compareEstimateTimestamp = function(a,b) {
 	var returnVal = 0;
@@ -141,6 +146,18 @@ app.get('/estimate', function (request,response) {
 	//console.log(request.query.name);
 	//console.log(estimateArray.estimates);
 	response.status(200).json(app.filterEstimatesByProperties(request.query));
+});
+
+app.get('/csv', function (request,response) {
+	if (estimateArray.estimates.length > 0) {
+		//console.log("Estimates array is populated.");
+		//console.log("JSON String: " + JSON.stringify(estimateArray));
+		json2csv({ data: estimateArray.estimates, fields: fields, newLine: '\n' }, function(err, csv) {
+		  if (err) console.log(err);
+		  //console.log("CSV String: " + csv);
+		  response.status(200).send(csv);
+		});		
+	}
 });
 
 var server = app.listen(port, function() {

@@ -11,11 +11,13 @@
 			userInfo.name = name;
 		};
 
-		var setType = function(type) {
+		var setType = function(type,scope) {
 			if ((type != "Participant") && (type != "Moderator")){
 				type = "Participant";
 			}
 			userInfo.type = type;
+			//Alerts anyone who cares that permissions have changed.
+			scope.$emit('onPermissionUpdate',type);
 		};
 
 		var getType = function() {

@@ -5,17 +5,11 @@ var myApp = angular.module('planningPoker');
 var mainController = function ($scope,$location,userservice) {
   $scope.name = "";
   $scope.type = "Participant";
-
-  //Handle the menu button click.
-  $scope.$on('onMenuToggle', function (event, data) {
-      $scope.name = "";
-      $scope.type = "Participant";
-    });
   
   $scope.view = function () {
     //Now that the user is transitioning to the play template, update the service.
     userservice.setName($scope.name);
-    userservice.setType($scope.type);
+    userservice.setType($scope.type, $scope);
     if ($scope.name != "") {
       if ($scope.type == "Moderator") {
         $location.path("/moderate");
