@@ -39,9 +39,9 @@
 
           <form class="navbar-form navbar-right">
             <div class="form-group">
-              <input type="text" class="form-control" ng-model="timeout" placeholder="Timeout in Minutes">
+              <input type="text" class="form-control" ng-model="timeout" ng-disabled="timerDisabled" placeholder="Timeout in Minutes">
             </div>
-            <button type="submit" class="btn btn-inverse" ng-click="time()">Time</button>
+            <button type="submit" class="btn btn-inverse" ng-click="time()" ng-disabled="timerDisabled">Time</button>
           </form>
         </div>
 
